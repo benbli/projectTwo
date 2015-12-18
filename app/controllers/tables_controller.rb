@@ -1,6 +1,6 @@
 class TablesController < ApplicationController
 
-  before_action :authenticate!
+  # before_action :authenticate!
 
   def create
     current_user.tables.create(table_params)
@@ -11,6 +11,7 @@ class TablesController < ApplicationController
     Table.delete(params[:id])
     redirect_to profile_path
   end
+
 
 private
   def table_params

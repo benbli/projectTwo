@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151217013807) do
+ActiveRecord::Schema.define(version: 20151218181818) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20151217013807) do
     t.integer  "table_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "name"
   end
 
   add_index "guests", ["table_id"], name: "index_guests_on_table_id", using: :btree
@@ -47,6 +48,7 @@ ActiveRecord::Schema.define(version: 20151217013807) do
     t.integer  "user_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.string   "name"
   end
 
   add_index "tables", ["user_id"], name: "index_tables_on_user_id", using: :btree
@@ -56,6 +58,7 @@ ActiveRecord::Schema.define(version: 20151217013807) do
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "account"
   end
 
   add_foreign_key "guests", "tables"

@@ -1,2 +1,22 @@
-<h1>Hello <%= current_user.username %>, pick a table please</h1>
+<h1>Hello <%= current_user.username %>, what would you like to do?</h1>
     <%= button_to "Log Out", sessions_path, method: :delete %>
+
+<!-- When you click on the table, it selects creates an instance -->
+
+<!-- As Server: assign Guests to tables -->
+<% if current_user.account == "server" %>
+  <%= render "layouts/alltables" %>
+<% end %>
+
+<!-- As admin: -->
+<% if current_user.account == "admin" %>
+  <%= render "layouts/alltables" %>
+<!-- Create/Edit/Destroy inventory -->
+<% end %>
+
+
+<!-- As chef: -->
+<% if current_user.account == "chef" %>
+<!-- Create/Edit/Destroy inventory -->
+<!-- Display current tickets -->
+<% end %>

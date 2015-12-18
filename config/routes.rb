@@ -2,8 +2,14 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
-  resources :users
-  
+  resources :users do
+    resources :tables, only: [:new, :create]
+    resources :guests, only: [:new, :create]
+  end
+
+  resources :orders
+  resources :dishes
+  resources :tables, only: [:show, :index]
 
   get '/log_in' => 'users#log_in'
   get '/profile' => 'users#profile'

@@ -1,0 +1,22 @@
+<h1>Orders</h1>
+
+<!-- show guests -->
+
+<% @orders.each do |order| %>
+<ul>
+  <li>
+    <%= order.guest.id %>
+    <%= order.dish.name %>
+    <%= order.dish.description %>
+    <%= order.dish.price %>
+  </li>
+<% end %>
+</ul>
+
+
+<!-- create orders -->
+<%= form_for @order do |f| %>
+  <%= f.collection_select(:dish_id, Dish.all, :id, :name) %>
+  <%= f.collection_select(:guest_id, Guest.all, :id, :name) %>
+  <%= f.submit "create order" %>
+  <% end %>

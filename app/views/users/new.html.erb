@@ -6,5 +6,11 @@
 <%= f.text_field :username %>
 <%= f.label :password %>
 <%= f.password_field :password %>
+<%= f.label :confirm %>
+<%= f.password_field :password_confirmation %>
 <%= f.submit value="Create" %>
 <% end %>
+
+<%= link_to "Home", root_path %>
+
+<%= render "layouts/error" %>
