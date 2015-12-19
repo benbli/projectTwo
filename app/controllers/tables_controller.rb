@@ -1,6 +1,12 @@
 class TablesController < ApplicationController
 
-  # before_action :authenticate!
+  before_action :authenticate!
+
+def index
+  @tables = Table.all
+  @table = Table.new
+  @table.guests.build  #research this
+end
 
   def create
     current_user.tables.create(table_params)
@@ -15,7 +21,7 @@ class TablesController < ApplicationController
 
 private
   def table_params
-    params.require(:table).permit(:seat_numbers)
+    params.require(:table).permit(:seat_numbers, :guest_id)
   end
 
 

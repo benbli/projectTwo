@@ -24,10 +24,23 @@ class DishesController < ApplicationController
     redirect_to dishes_path
   end
 
-private
+  def edit
+    @dish = Dish.find(params[:id])
+  end
 
+  def show
+    @dish = Dish.find(params[:id])
+  end
+
+  def update
+    dish = Dish.find(params[:id])
+    dish.update(dish_params)
+    redirect_to dishes_path
+  end
+
+private
   def dish_params
-    parms.require[:dishes].permit(:name, :description, :price)
+    params.require(:dish).permit(:name, :description, :price)
   end
 
 end

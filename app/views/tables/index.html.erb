@@ -1,4 +1,14 @@
-<h1>USERS TABLES</h1>
+<h1>SERVER'S TABLES</h1>  <!--should just show one table of users'-->
+
+
+<!-- Show server's tables -->
+<!-- landing page should be the table that was just selected -->
+<% current_user.tables.each do |table| %>
+<div class="server-table"><%= table.name %></div>
+<% end %>
+
+
+<!-- Add Guests to Tables -->
 
 
 

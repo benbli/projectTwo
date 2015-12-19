@@ -1,10 +1,7 @@
 namespace :junk do
 
-# Generate an Admin
-
-
-# Gererates fake guests
-  desc 'generate many guests'
+# Gererates faker guests
+  desc 'Generate many guests'
   task :guests => :environment do
     10.times do
       Guest.create({name: Faker::Name.name })
@@ -12,7 +9,7 @@ namespace :junk do
   end
 
 # Generate tables
-  desc 'generate tables'
+  desc 'Generate tables'
   task :tables => :environment do
     (1..8).each do |x|
       Table.create({seat_numbers: 1, name: "BAR#{x}"})
@@ -31,9 +28,7 @@ namespace :junk do
   # Create an Admin with username and password
     desc 'create an admin account'
     task :users => :environment do
-      1.times do
-        User.create({username: "ADMIN", password: "nimba", account: "admin"})
-      end
+      User.create({username: "ADMIN", password: "nimba", account: "admin"})
     end
 
 

@@ -9,7 +9,12 @@ class OrdersController < ApplicationController
 
   def create
     Order.create(order_params)
-    redirect_to profile_path
+    redirect_to orders_path
+  end
+
+  def destroy
+    Order.delete(params[:id])
+    redirect_to orders_path
   end
 
 private
