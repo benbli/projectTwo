@@ -2,13 +2,10 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
-  resources :users do
-    resources :tables, shallow: true
-  end
-  #
+  resources :users 
+  resources :tables
   resources :orders
   resources :dishes
-  resources :tables
 
 
   get '/log_in' => 'users#log_in'

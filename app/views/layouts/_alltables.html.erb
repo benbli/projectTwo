@@ -8,6 +8,6 @@
 
 <% tables.each do |table| %>
 <%# binding.pry %>
-<h4><%= link_to table.name, tables_path(table.id) %></h3>
+<h4><%= link_to table.name, tables_path %></h3>
 <p>Seat numbers: <%= table.seat_numbers %></p>
 <% end %>

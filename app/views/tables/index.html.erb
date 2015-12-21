@@ -10,9 +10,6 @@
 <hr>
 <!-- Add Guests to Tables -->
 
-
-
-
 <!-- Order Button -->
 
 <h2><%= current_user.username %>'s<span style="font-variant:small-caps;"> orders</span></h2>
@@ -21,7 +18,7 @@
 <% if @orders.blank? %>
 <p>There are currently no orders.</p>
 <% else %>
-<p>These are the current orders.</p>
+<p>Open tickets:</p>
   <ul>
     <% current_user.orders.each do |order| %>
     <li>
