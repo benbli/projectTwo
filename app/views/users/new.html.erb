@@ -1,6 +1,7 @@
-<h1>Sign Up</h1>
+<%= render "layouts/header" %>
 
 <!--  Create a User with a username & password -->
+<div class="wrapper">
 <%= form_for @user do |f| %>
 <%= f.label :username %>
 <%= f.text_field :username %>
@@ -11,6 +12,8 @@
 <%= f.submit value="Create" %>
 <% end %>
 
-<%= link_to "Home", root_path %>
 
 <%= render "layouts/error" %>
+
+<%= link_to "Home", root_path %>
+</div>

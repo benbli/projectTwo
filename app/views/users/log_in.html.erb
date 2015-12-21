@@ -1,5 +1,6 @@
-<h1>Login</h1>
+<%= render "layouts/header" %>
 
+<div class="wrapper">
 <%= form_tag sessions_path do %>
 <%= label_tag :username %>
 <%= text_field_tag :username %>
@@ -11,3 +12,4 @@
 <%= link_to "Home", root_path %>
 
 <%= render "layouts/error" %>
+</div>

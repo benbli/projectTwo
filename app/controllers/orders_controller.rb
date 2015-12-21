@@ -9,7 +9,7 @@ class OrdersController < ApplicationController
 
   def create
     Order.create(order_params)
-    redirect_to orders_path
+    redirect_to request.referrer
   end
 
   def destroy

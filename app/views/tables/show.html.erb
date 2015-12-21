@@ -1,31 +1,16 @@
+<%= render 'layouts/header' %>
 
-
-
+<div class="wrapper">
 <h2><%= @table.name %></h2>
 
 <%= link_to "All Orders", orders_path %>
-
-<!-- create orders -->
-<%= form_for order, url: table_path(order) do |f| %>
-  <%= f.collection_select(:table_id, Table.all, :id, :name) %>
-  <%= f.collection_select(:dish_id, Dish.all, :id, :name) %>
-  <%= f.submit :order %>
-  <% end %>
-
-<!-- Show orders -->
-<% if @orders.blank? %>
+<% if @table.orders.blank? %>
 <p>There are currently no orders.</p>
 <% else %>
 <p>Open tickets:</p>
-  <ul>
-    <% @orders.each do |order| %>
-    <li>
-      <%= order.table.name %> ordered <%= order.dish.name %> for $<%= order.dish.price %> Time:
-      <%= content_tag(:div, class: 'box') do %>
-      <%= order.created_at.strftime("%H:%M:%S")%>
-      <% end %>
-      <%= button_to :remove, order_path(order), method: :delete%>
-    </li>
-    <% end %>
-  </ul>
+<ul>
+  <% @table.orders.each do |order| %>
+  <li><%= order.table.name %> ordered <%= order.dish.name %>....$<%= '%.2f' % order.dish.price %></li>
+  <% end %>
+</ul>
 <% end %>

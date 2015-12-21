@@ -1,6 +1,5 @@
 
 <% tables.each do |table| %>
-<%# binding.pry %>
 <h4><%= link_to table.name, table_path(table) %></h3>
 <p>Seat numbers: <%= table.seat_numbers %></p>
 <% end %>

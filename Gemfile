@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'font-awesome-sass'
 gem "awesome_print"
 gem 'faker'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

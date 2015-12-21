@@ -1,8 +1,6 @@
-<h1>Hello <%= current_user.username %>!</h1>
-    <%= button_to "Log Out", sessions_path, method: :delete %>
+<%= render "layouts/header" %>
 
-<!-- When you click on the table, it selects creates an instance -->
-
+<div class="wrapper">
 <!-- As Server: assign Guests to tables -->
 <% if current_user.account == "server" %>
   <%= render "layouts/alltables" %>
@@ -19,3 +17,6 @@
 <!-- Create/Edit/Destroy inventory -->
 <!-- Display current tickets -->
 <% end %>
+
+<%= button_to "Log Out", sessions_path, method: :delete %>
+</div>
