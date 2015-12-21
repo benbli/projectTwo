@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.desribe Guest, type: :model do
+RSpec.describe Guest, type: :model do
   describe "given a guest" do
     before do
       @yoyo = Guest.create({name: 'Yolanda'})

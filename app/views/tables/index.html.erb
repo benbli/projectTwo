@@ -1,21 +1,37 @@
-<h1>SERVER'S TABLES</h1>  <!--should just show one table of users'-->
 
+<h2><%= current_user.username %>'s<span style="font-variant:small-caps;"> tables</span></h2>
 
 <!-- Show server's tables -->
 <!-- landing page should be the table that was just selected -->
 <% current_user.tables.each do |table| %>
-<div class="server-table"><%= table.name %></div>
+<%= table.name %>
 <% end %>
 
-
+<hr>
 <!-- Add Guests to Tables -->
 
 
 
 
-<!-- Checkout button -->
-
-
-
-
 <!-- Order Button -->
+
+<h2><%= current_user.username %>'s<span style="font-variant:small-caps;"> orders</span></h2>
+
+<!-- Show orders -->
+<% if @orders.blank? %>
+<p>There are currently no orders.</p>
+<% else %>
+<p>These are the current orders.</p>
+  <ul>
+    <% current_user.orders.each do |order| %>
+    <li>
+      <%= order.guest.name %> ordered <%= order.dish.name %> for $<%= order.dish.price %> Time: <%= order.created_at.to_s(:short)%>
+      <%= button_to :remove, order_path(order), method: :delete%>
+    </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%=  link_to :order, orders_path %>
+
+<!-- Checkout button -->

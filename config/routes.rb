@@ -3,8 +3,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :users do
-    resources :tables
-    resources :guests, only: [:new, :create]
+    resources :tables, shallow: true
   end
   #
   resources :orders

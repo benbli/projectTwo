@@ -8,4 +8,13 @@ module ApplicationHelper
   def authenticate!
     redirect_to root_path unless current_user
   end
+
+  def tables
+    @tables = Table.all
+  end
+
+  def guests
+    @guests = Guest.all
+  end
+
 end

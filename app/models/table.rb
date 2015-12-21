@@ -4,6 +4,7 @@ class Table < ActiveRecord::Base
   has_many :orders, through: :guests
   has_many :dishes, through: :orders
 
-  # accepts_nested_attributes_for :guests
+  accepts_nested_attributes_for :guests, :orders
   # validates_presence_of :guests
+
 end

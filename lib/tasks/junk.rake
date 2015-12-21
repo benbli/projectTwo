@@ -25,19 +25,18 @@ namespace :junk do
     end
   end
 
-  # Create an Admin with username and password
-    desc 'create an admin account'
-    task :users => :environment do
-      User.create({username: "ADMIN", password: "nimba", account: "admin"})
-    end
+# Create an Admin with username and password
+  desc 'Create an admin account'
+  task :admin => :environment do
+    User.create({username: "ADMIN", password: "nimba", account: "admin"})
+  end
 
 
-  # Create a Chef username and password
-
-
-
-
-
+# Create a Chef username and password
+  desc 'Create a chec account'
+  task :chef => :environment do
+    User.create({username: "CHEF", password: "yeschef", account: "chef"})
+  end
 
 
 

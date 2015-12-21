@@ -20,8 +20,6 @@ class UsersController < ApplicationController
 
   def profile
     current_user
-    @tables = Table.all
-    @guest = Guest.new
   end
 
 

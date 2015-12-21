@@ -1,4 +1,13 @@
-<% @tables.each do |table| %>
-<h3><a href=""><%= table.name %></a></h3>
+<div class="row">
+<ul>
+  <% guests.each do |guest| %>
+  <li><%= guest.name %></li>
+  <% end %>
+</ul>
+</div>
+
+<% tables.each do |table| %>
+<%# binding.pry %>
+<h4><%= link_to table.name, tables_path(table.id) %></h3>
 <p>Seat numbers: <%= table.seat_numbers %></p>
 <% end %>

@@ -1,22 +1,22 @@
-<h1>Orders</h1>
+<h2>Orders</h2> <%=  link_to :tables, tables_path %>
 
 <!-- create orders -->
 <%= form_for @order do |f| %>
   <%= f.collection_select(:dish_id, Dish.all, :id, :name) %>
   <%= f.collection_select(:guest_id, Guest.all, :id, :name) %>
-  <%= f.submit "create order" %>
+  <%= f.submit :order %>
   <% end %>
 
 <!-- Show orders -->
 <% if @orders.blank? %>
 <p>There are currently no orders.</p>
 <% else %>
-<p>These are the current orders.</p>
+<p>Open tickets:</p>
   <ul>
     <% @orders.each do |order| %>
     <li>
-      <%= order.guest.name %> ordered <%= order.dish.name %> for $<%= order.dish.price %>
-      <%= button_to "Remove", order_path(order), method: :delete%>
+      <%= order.guest.name %> ordered <%= order.dish.name %> for $<%= order.dish.price %> Time: <%= order.created_at.to_s(:short)%>
+      <%= button_to :remove, order_path(order), method: :delete%>
     </li>
     <% end %>
   </ul>
