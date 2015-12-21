@@ -17,10 +17,16 @@ class OrdersController < ApplicationController
     redirect_to orders_path
   end
 
+  def update
+    order = Order.find(params[:id])
+    order.update( order_params )
+    redirect_to table_path
+  end
+
 private
 
   def order_params
-    params.require(:order).permit(:guest_id, :dish_id)
+    params.require(:order).permit(:table_id, :dish_id)
   end
 
 end

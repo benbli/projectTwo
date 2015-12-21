@@ -24,24 +24,15 @@ ActiveRecord::Schema.define(version: 20151218181818) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "guests", force: :cascade do |t|
-    t.integer  "table_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "name"
-  end
-
-  add_index "guests", ["table_id"], name: "index_guests_on_table_id", using: :btree
-
   create_table "orders", force: :cascade do |t|
-    t.integer  "guest_id"
+    t.integer  "table_id"
     t.integer  "dish_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   add_index "orders", ["dish_id"], name: "index_orders_on_dish_id", using: :btree
-  add_index "orders", ["guest_id"], name: "index_orders_on_guest_id", using: :btree
+  add_index "orders", ["table_id"], name: "index_orders_on_table_id", using: :btree
 
   create_table "tables", force: :cascade do |t|
     t.integer  "seat_numbers"
@@ -61,8 +52,7 @@ ActiveRecord::Schema.define(version: 20151218181818) do
     t.string   "account"
   end
 
-  add_foreign_key "guests", "tables"
   add_foreign_key "orders", "dishes"
-  add_foreign_key "orders", "guests"
+  add_foreign_key "orders", "tables"
   add_foreign_key "tables", "users"
 end

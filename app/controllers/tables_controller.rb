@@ -5,7 +5,7 @@ class TablesController < ApplicationController
   def index
     @tables = Table.all
     @table = Table.new
-    @table.guests.build  #research this
+    @order = Order.new
   end
 
   def create

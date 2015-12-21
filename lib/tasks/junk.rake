@@ -25,18 +25,22 @@ namespace :junk do
     end
   end
 
-# Create an Admin with username and password
-  desc 'Create an admin account'
-  task :admin => :environment do
-    User.create({username: "ADMIN", password: "nimba", account: "admin"})
+  desc 'Create Admin accounts'
+  task :users => :environment do
+    User.create({username: "admin", password_digest: "admin", account: "admin"})
+    User.create({username: "chef", password_digest: "chef", account: "chef"})
+  end
+
+# Create junk food
+  desc 'Create Dishes'
+  task :dishes => :environment do
+    Dish.create({name: "Soup", price: 23})
+    Dish.create({name: "Banana", price: 3})
+    Dish.create({name: "Chicken Parm", price: 24})
   end
 
 
-# Create a Chef username and password
-  desc 'Create a chec account'
-  task :chef => :environment do
-    User.create({username: "CHEF", password: "yeschef", account: "chef"})
-  end
+
 
 
 

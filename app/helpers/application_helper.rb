@@ -13,8 +13,7 @@ module ApplicationHelper
     @tables = Table.all
   end
 
-  def guests
-    @guests = Guest.all
+  def order
+    @order = Order.find(params[:id])
   end
-
 end
