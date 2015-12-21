@@ -1,8 +1,8 @@
-<h1>Restaurant Dishes</h1>
-
+<%= render 'layouts/header' %>
+<div class="wrapper">
 <!-- Create a Dish -->
 <%= form_for @dish do |f| %>
-  <%= f.label :name %>
+  <%= f.label :dish %>
   <%= f.text_field :name %>
   <%= f.label :description %>
   <%= f.text_field :description %>
@@ -23,3 +23,4 @@
     </li>
   <% end %>
 </ul>
+</div>

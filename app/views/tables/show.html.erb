@@ -5,12 +5,37 @@
 
 <%= link_to "All Orders", orders_path %>
 <% if @table.orders.blank? %>
-<p>There are currently no orders.</p>
+  <p>There are currently no orders.</p>
 <% else %>
-<p>Open tickets:</p>
-<ul>
-  <% @table.orders.each do |order| %>
-  <li><%= order.table.name %> ordered <%= order.dish.name %>....$<%= '%.2f' % order.dish.price %></li>
-  <% end %>
-</ul>
+  <p>Open tickets:</p>
+  <table class="order-list">
+    <thead>
+      <tr>
+        <th>Dish</th>
+        <th>Price</th>
+        <th>Time Ordered</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @table.orders.each do |order| %>
+      <tr>
+        <td><%= order.dish.name %></td>
+        <td>$<%= '%.2f' % order.dish.price %></td>
+        <td><%= order.created_at.strftime("%H:%M:%S")%></td>
+      </tr>
+      <% end %>
+      <tr>
+        <td>Subtotal</td>
+        <td>$<%= '%.2f' % @table.dishes.sum(:price) %></td>
+      </tr>
+      <tr>
+        <td>Tax</td>
+        <td>$<%= '%.2f' % (@table.dishes.sum(:price) * 0.09) %></td>
+      </tr>
+      <tr>
+        <td>Total</td>
+        <td>$<%= '%.2f' % ((@table.dishes.sum(:price) * 0.09) + (@table.dishes.sum(:price))) %></td>
+      </tr>
+    </tbody>
+  </table>
 <% end %>
