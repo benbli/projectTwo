@@ -36,6 +36,16 @@
         <td>Total</td>
         <td>$<%= '%.2f' % ((@table.dishes.sum(:price) * 0.09) + (@table.dishes.sum(:price))) %></td>
       </tr>
+      <tr>
+        <td>
+          <p style="font-size: .8em;">
+          Tip <br>
+            18%: $<%= '%.2f' % ((@table.dishes.sum(:price) * 0.09) + (@table.dishes.sum(:price) * 0.18)) %><br>
+            20%: $<%= '%.2f' % ((@table.dishes.sum(:price) * 0.09) + (@table.dishes.sum(:price) * 0.20)) %><br>
+            25%: $<%= '%.2f' % ((@table.dishes.sum(:price) * 0.09) + (@table.dishes.sum(:price) * 0.25)) %>
+         </p>
+       </td>
+      </tr>
     </tbody>
   </table>
 <% end %>
