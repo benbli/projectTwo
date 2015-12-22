@@ -2,6 +2,12 @@
 <div class="wrapper">
 <%=  link_to :tables, profile_path %>
 
+<!-- create orders in ALL-->
+<%= form_for @order do |f| %>
+<%= f.collection_select(:table_id, Table.all, :id, :name) %>
+<%= f.collection_select(:dish_id, Dish.all, :id, :name) %>
+<%= f.submit :order %>
+<% end %>
 
 <!-- Show orders in ALL-->
 <% if @order.blank? %>
@@ -19,10 +25,3 @@
   </ul>
 <% end %>
 </div>
-
-<!-- create orders in ALL-->
-<%= form_for @order do |f| %>
-<%= f.collection_select(:table_id, Table.all, :id, :name) %>
-<%= f.collection_select(:dish_id, Dish.all, :id, :name) %>
-<%= f.submit :order %>
-<% end %>

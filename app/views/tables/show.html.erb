@@ -1,9 +1,10 @@
 <%= render 'layouts/header' %>
 
 <div class="wrapper">
+  <div class="table-name" style="display: inline-block">
 <h2><%= @table.name %></h2>
-
-<%= link_to "All Orders", orders_path %>
+<%= link_to "Place an Order", orders_path %>
+  </div>
 <% if @table.orders.blank? %>
   <p>There are currently no orders.</p>
 <% else %>
