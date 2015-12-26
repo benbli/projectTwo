@@ -1,0 +1,27 @@
+<%= render 'layouts/header' %>
+<div class="wrapper">
+<h1>Employee data</h1>
+
+
+<table class="employee-table">
+  <thead>
+    <tr>
+      <th> Username </th>
+      <th> Account Type </th>
+      <th> Created On </th>
+      <th> Edit </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+    <tr>
+      <td><%= user.username %></td>
+      <td><%= user.account %></td>
+      <td><%= user.created_at %></td>
+      <td><%= button_to :edit, edit_user_path(user.id), method: :get%></td>
+      <td><%= button_to :remove, user_path(user), method: :delete%></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

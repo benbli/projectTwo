@@ -6,6 +6,8 @@
 <%= form_for @order do |f| %>
 <%= f.collection_select(:table_id, Table.all, :id, :name) %>
 <%= f.collection_select(:dish_id, Dish.all, :id, :name) %>
+<%= f.label :comments %>
+<%= f.text_field :comment%>
 <%= f.submit :order %>
 <% end %>
 
@@ -16,10 +18,17 @@
 <p>ALL Open tickets:</p>
   <ul>
     <% @orders.each do |order| %>
-    <li style="display: inline-block;">
+    <li >
       <%= order.table.name %> ordered <a><%= order.dish.name %></a>
-      @: <%= order.created_at.strftime("%H:%M:%S")%>
-    <%= button_to :remove, order_path(order), method: :delete%>
+      <% if order.created_at.to_time > 5.minutes.ago  %>
+          <div class="four columns" style="color: green;"><%= time.min - order.created_at.min%> min</div>
+            <% elsif order.created_at.to_time < 5.minutes.ago && order.created_at.to_time > 10.minutes.ago %>
+             <div class="four columns" style="color: yellow;"><%= time.min - order.created_at.min%> min</div>
+               <% elsif order.created_at.to_time < 10.minutes.ago %>
+                 <div class="four columns" style="color: red;"><%= time.min - order.created_at.min%> min</div>
+        <% end %>
+      Notes: <%= order.comment %>
+      <%= button_to :remove, order_path(order), method: :delete%>
     </li>
     <% end %>
   </ul>
