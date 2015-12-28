@@ -1,7 +1,7 @@
 <%= render 'layouts/header' %>
 
 <div class="wrapper">
-  <div class="table-name" style="display: inline-block">
+  <div class="table-name" style="display: inline-block;">
 <h2><%= @table.name %></h2>
 <%= link_to "Place an Order", orders_path %>
   </div>
@@ -22,7 +22,7 @@
       <tr>
         <td><%= order.dish.name %></td>
         <td>$<%= '%.2f' % order.dish.price %></td>
-        <td><%= order.created_at.strftime("%H:%M:%S")%></td>
+        <td><%= order.created_at.to_time.strftime('%l:%M %p %Z')%></td>
       </tr>
       <% end %>
       <tr>
@@ -40,10 +40,10 @@
       <tr>
         <td>
           <p style="font-size: .8em;">
-          Tip <br>
-            18%: $<%= '%.2f' % ((@table.dishes.sum(:price) * 0.09) + (@table.dishes.sum(:price) * 0.18)) %><br>
-            20%: $<%= '%.2f' % ((@table.dishes.sum(:price) * 0.09) + (@table.dishes.sum(:price) * 0.20)) %><br>
-            25%: $<%= '%.2f' % ((@table.dishes.sum(:price) * 0.09) + (@table.dishes.sum(:price) * 0.25)) %>
+          Suggested Tip :<br>
+            18% : $<%= '%.2f' % ((@table.dishes.sum(:price) * 0.09) + (@table.dishes.sum(:price) * 0.18)) %><br>
+            20% : $<%= '%.2f' % ((@table.dishes.sum(:price) * 0.09) + (@table.dishes.sum(:price) * 0.20)) %><br>
+            25% : $<%= '%.2f' % ((@table.dishes.sum(:price) * 0.09) + (@table.dishes.sum(:price) * 0.25)) %>
          </p>
        </td>
       </tr>
