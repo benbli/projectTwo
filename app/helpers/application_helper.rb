@@ -17,6 +17,10 @@ module ApplicationHelper
     @order = Order.find(params[:id])
   end
 
+  def orders
+    @orders = Order.all
+  end
+
   def time
     Time.now
   end

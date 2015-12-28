@@ -12,4 +12,5 @@ class User < ActiveRecord::Base
   def default_values
     self.account ||= "server"
   end
+
 end

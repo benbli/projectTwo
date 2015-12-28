@@ -14,8 +14,9 @@
 
 <!-- As chef: -->
 <% if current_user.account == "chef" %>
-<!-- Create/Edit/Destroy inventory -->
 <!-- Display current tickets -->
+<%= render "layouts/allorders" %>
+<!-- Create/Edit/Destroy inventory -->
 <% end %>
 
 <%= button_to "Log Out", sessions_path, method: :delete %>

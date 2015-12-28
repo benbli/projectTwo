@@ -17,7 +17,7 @@
     <tr>
       <td><%= user.username %></td>
       <td><%= user.account %></td>
-      <td><%= user.created_at %></td>
+      <td><%= user.created_at.to_time.strftime('%l:%M %p %Z')%></td>
       <td><%= button_to :edit, edit_user_path(user.id), method: :get%></td>
       <td><%= button_to :remove, user_path(user), method: :delete%></td>
     </tr>

@@ -1,0 +1,22 @@
+<!-- Show orders in ALL-->
+<% if orders.blank? %>
+<p>There are currently no orders.</p>
+<% else %>
+<p>ALL Open tickets:</p>
+  <ul>
+    <% orders.each do |order| %>
+    <li >
+      <%= order.table.name %> ordered <a><%= order.dish.name %></a>
+      <% if order.created_at.to_time > 5.minutes.ago  %>
+          <div class="four columns" style="color: green;"><%= time.min - order.created_at.min%> min</div>
+            <% elsif order.created_at.to_time < 5.minutes.ago && order.created_at.to_time > 10.minutes.ago %>
+             <div class="four columns" style="color: yellow;"><%= time.min - order.created_at.min%> min</div>
+               <% elsif order.created_at.to_time < 10.minutes.ago %>
+                 <div class="four columns" style="color: red;"><%= time.min - order.created_at.min%> min</div>
+        <% end %>
+      Notes: <%= order.comment %>
+      <%= button_to :remove, order_path(order), method: :delete%>
+    </li>
+    <% end %>
+  </ul>
+<% end %>
