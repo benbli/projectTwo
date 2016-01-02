@@ -13,5 +13,17 @@
 <body class="container">
 
 <%= yield %>
+<script>
+
+(function ($) {
+
+$(document).ready(function () {
+  $( "button" ).click(function() {
+    $( "span" ).toggle();
+    $(".eur").toggle();
+    });
+  })
+})(jQuery);
+</script>
 </body>
 </html>
