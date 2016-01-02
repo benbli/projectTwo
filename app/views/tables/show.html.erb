@@ -1,10 +1,19 @@
 <%= render 'layouts/header' %>
 
 <div class="wrapper">
-  <div class="table-name" style="display: inline-block;">
-<h2><%= @table.name %></h2>
-<%= link_to "Place an Order", orders_path %>
-  </div>
+<!-- Currency converter   -->
+  <button id="currency">
+    <ul>
+      <li><a><i class="fa fa-usd"></i> / <i class="fa fa-eur"></i></a></li>
+    </ul>
+  </button>
+
+<div class="table-name" style="display: inline-block;">
+  <h2><%= @table.name %></h2>
+  <%= link_to "Place an Order", orders_path %>
+</div>
+
+
 <% if @table.orders.blank? %>
   <p>There are currently no orders.</p>
 <% else %>
@@ -21,32 +30,38 @@
       <% @table.orders.each do |order| %>
       <tr>
         <td><%= order.dish.name %></td>
-        <td>$<%= '%.2f' % order.dish.price %></td>
+        <td><span>$</span><span style="display: none;">€</span><div class="eur"><%= '%.2f' % order.dish.price %></div><div class="eur" style="display: none"><%= '%.2f' % (order.dish.price * 0.9207) %></div></td>
         <td><%= order.created_at.to_time.strftime('%l:%M %p %Z')%></td>
       </tr>
       <% end %>
       <tr>
         <td>Subtotal</td>
-        <td>$<%= '%.2f' % @table.dishes.sum(:price) %></td>
+        <td><span>$</span><span style="display: none;">€</span><div class="eur"><%= '%.2f' % orderSum %></div><div class="eur" style="display: none"><%= '%.2f' % orderSumEur %></div></td>
       </tr>
       <tr>
         <td>Tax</td>
-        <td>$<%= '%.2f' % (@table.dishes.sum(:price) * 0.09) %></td>
+        <td><span>$</span><span style="display: none;">€</span><div class="eur"><%= '%.2f' % (orderSum * 0.09) %></div><div class="eur" style="display: none"><%= '%.2f' % (orderSumEur * 0.09) %></td>
       </tr>
       <tr>
         <td>Total</td>
-        <td>$<%= '%.2f' % ((@table.dishes.sum(:price) * 0.09) + (@table.dishes.sum(:price))) %></td>
+        <td><span>$</span><span style="display: none;">€</span><div class="eur"><%= '%.2f' % (orderSum + (orderSum * 0.09)) %></div><div class="eur" style="display: none"><%= '%.2f' % (orderSumEur + (orderSumEur * 0.09)) %></div></td>
       </tr>
       <tr>
         <td>
-          <p style="font-size: .8em;">
-          Suggested Tip :<br>
-            18% : $<%= '%.2f' % ((@table.dishes.sum(:price) * 0.09) + (@table.dishes.sum(:price) * 0.18)) %><br>
-            20% : $<%= '%.2f' % ((@table.dishes.sum(:price) * 0.09) + (@table.dishes.sum(:price) * 0.20)) %><br>
-            25% : $<%= '%.2f' % ((@table.dishes.sum(:price) * 0.09) + (@table.dishes.sum(:price) * 0.25)) %>
-         </p>
+          <div style="font-size: .8em;">
+          With Suggested Tip :<br>
+            18% : <span>$</span><span style="display: none;">€</span><div class="eur"><%= '%.2f' % (((orderSum + (orderSum * 0.09)) * 0.18) + (orderSum + (orderSum * 0.09))) %></div>
+                  <div class="eur" style="display: none"><%= '%.2f' % (((orderSumEur + (orderSumEur * 0.09)) * 0.18) + (orderSumEur + (orderSumEur * 0.09))) %></div>
+            <br>
+            20% : <span>$</span><span style="display: none;">€</span><div class="eur"><%= '%.2f' % (((orderSum + (orderSum * 0.09)) * 0.20) + (orderSum + (orderSum * 0.09))) %></div>
+                  <div class="eur" style="display: none"><%= '%.2f' % (((orderSumEur + (orderSumEur * 0.09)) * 0.20) + (orderSumEur + (orderSumEur * 0.09))) %></div>
+            <br>
+            25% : <span>$</span><span style="display: none;">€</span><div class="eur"><%= '%.2f' % (((orderSum + (orderSum * 0.09)) * 0.25) + (orderSum + (orderSum * 0.09))) %></div>
+                  <div class="eur" style="display: none"><%= '%.2f' % (((orderSumEur + (orderSumEur * 0.09)) * 0.25) + (orderSumEur + (orderSumEur * 0.09))) %></div>
+         </div>
        </td>
       </tr>
     </tbody>
   </table>
 <% end %>
+</div>

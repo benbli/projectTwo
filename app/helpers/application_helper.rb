@@ -25,4 +25,12 @@ module ApplicationHelper
     Time.now
   end
 
+  def orderSum
+    @table.dishes.sum(:price)
+  end
+
+  def orderSumEur
+    @table.dishes.sum(:price) * 0.9207
+  end
+
 end

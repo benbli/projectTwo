@@ -56,3 +56,20 @@ a {
 .dish-btns {
   display: inline-block;
 }
+#currency {
+  position: relative;
+  float: right;
+  bottom: -7em;
+  padding-left: 0.1em;
+  padding-right: 1em;
+}
+#currency
+ul
+li {
+  margin-left: .8em;
+  font-size: 1.5em;
+  display: inline-flex;
+}
+.eur {
+  display: inline-block;
+}

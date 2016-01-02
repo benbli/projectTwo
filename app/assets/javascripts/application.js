@@ -14,3 +14,40 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+// $('document').ready(function(){
+//
+//   $('#usd').click(function(e){
+//     e.preventDefault();
+//     $("<span>$</span>").replaceWith('<span>€</span>')
+//   })
+//
+//
+//
+// })
+
+// (function ($) {
+//   var $currencyToggleBtn = $('button');
+//
+//   function onBtnClick(e) {
+//     e.preventDefault();
+//     var $this = $(this)
+//     $this.toggle();
+//   }
+//
+//   $(document).ready(function () {
+//     $currencyToggleBtn.on('click', onBtnClick);
+//     $('button')on('click', function () {
+//       $('.eur').toggle();
+//     })
+//   });
+//
+// })(jQuery);
+
+
+$(document).ready(function () {
+  $( "button" ).click(function() {
+    $( "span" ).toggle();
+    $(".eur").toggle();
+    });
+  })
