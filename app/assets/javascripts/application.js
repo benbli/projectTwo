@@ -15,23 +15,6 @@
 //= require turbolinks
 //= require_tree .
 
-// (function ($) {
-//   var $currencyToggleBtn = $('button');
-//
-//   function onBtnClick(e) {
-//     e.preventDefault();
-//     var $this = $(this)
-//     $this.toggle();
-//   }
-//
-//   $(document).ready(function () {
-//     $currencyToggleBtn.on('click', onBtnClick);
-//     $('button')on('click', function () {
-//       $('.eur').toggle();
-//     })
-//   });
-//
-// })(jQuery);
 
 
 $(document).ready(function () {
