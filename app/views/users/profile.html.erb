@@ -8,8 +8,8 @@
 
 <!-- As admin: -->
 <% if current_user.account == "admin" %>
+<%=  link_to :Edit_users, users_path %>
   <%= render "layouts/alltables" %>
-  <%=  link_to :users, users_path %>
 <!-- Create/Edit/Destroy inventory -->
 <% end %>
 
