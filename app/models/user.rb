@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
 
   private
   def default_values
-    self.account ||= "admin"
+    self.account ||= "chef"
   end
 
 end

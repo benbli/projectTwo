@@ -9,6 +9,7 @@
 <!-- As admin: -->
 <% if current_user.account == "admin" %>
   <%= render "layouts/alltables" %>
+  <%=  link_to :users, users_path %>
 <!-- Create/Edit/Destroy inventory -->
 <% end %>
 
