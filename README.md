@@ -26,7 +26,7 @@ ERD: ![ERD](app/assets/images/screenshots/Screen Shot 2015-12-19 at 16.51.01.png
 WIREFRAME: ![WIREFRAME](app/assets/images/screenshots/Screen Shot 2015-12-21 at 22.57.25.png)
 
 #Technologies:
-This game features HTML5, SKELETON CSS, JAVASCRIPT/JQUERY, RUBY ON RAILS and should run on most updated browsers.
+This app features HTML5, SKELETON CSS, JAVASCRIPT/JQUERY, RUBY ON RAILS and should run on most updated browsers.
 Hosted on HEROKU.
 
 #URL:
